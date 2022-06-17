@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    Post.connection.execute("SELECT pg_sleep(0.005) as sleep_time;") # Simulate a 5ms db query
     @posts = Post.all
   end
 
